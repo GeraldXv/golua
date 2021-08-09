@@ -64,16 +64,7 @@ func newState(L *C.lua_State) *State {
 }
 
 func (L *State) addFreeIndex(i uint) {
-	freelen := len(L.freeIndices)
-	//reallocate if necessary
-	if freelen+1 > cap(L.freeIndices) {
-		newSlice := make([]uint, freelen, cap(L.freeIndices)*2)
-		copy(newSlice, L.freeIndices)
-		L.freeIndices = newSlice
-	}
-	//reslice
-	L.freeIndices = L.freeIndices[0 : freelen+1]
-	L.freeIndices[freelen] = i
+	L.freeIndices = append(L.freeIndices, i)
 }
 
 func (L *State) getFreeIndex() (index uint, ok bool) {
