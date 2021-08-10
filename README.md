@@ -159,3 +159,4 @@ GoLua is released under the MIT license.
 Please see the LICENSE file for more information.
 
 Lua is Copyright (c) Lua.org, PUC-Rio.  All rights reserved.
+
